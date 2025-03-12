@@ -26,7 +26,7 @@
 #ifndef M_PI
 #define M_PI 3.14159265358979323846
 #endif
-
+using namespace boost::placeholders;
 double degreeToRadian(double degree) { return degree * M_PI / 180; }
 
 // elevation angle of each line for HS Line 40 Lidar, Line 1 - Line 40

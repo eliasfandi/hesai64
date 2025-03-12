@@ -20,6 +20,9 @@ find_package(rosidl_default_generators REQUIRED)
 find_package(builtin_interfaces REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
+find_package(pcl_conversions REQUIRED)
+find_package(tf2_geometry_msgs REQUIRED)
+find_package(tf2_ros REQUIRED)
 # install(FILES DESTINATION share/${PROJECT_NAME})
 # ament_export_dependencies(rosidl_default_runtime)
 # ament_export_dependencies(rosidl_default_runtime)
@@ -47,11 +50,17 @@ target_include_directories(PandarGeneral PRIVATE
     src/HesaiLidar_General_SDK/src/PandarGeneralRaw/
     ${Boost_INCLUDE_DIRS}
     ${PCL_INCLUDE_DIRS}
+    ${tf2_ros_INCLUDE_DIRS}
+    ${std_msgs_INCLUDE_DIRS}
+    ${geometry_msgs_INCLUDE_DIRS}
     # ${ament_INCLUDE_DIRS}
 )
 target_link_libraries(PandarGeneral
     ${Boost_LIBRARIES}
     ${PCL_IO_LIBRARIES}
+    ${tf2_ros_LIBRARIES}
+    ${std_msgs_LIBRARIES}
+    ${geometry_msgs_LIBRARIES}
     Boost::thread
     pcap
     # ${ament_LIBRARIES}
@@ -99,6 +108,7 @@ ament_target_dependencies(hesai_lidar_node
   "sensor_msgs"
   "std_msgs"
   "tf2_geometry_msgs"
+  "tf2_ros"
 )
 
 target_include_directories(hesai_lidar_node PRIVATE
